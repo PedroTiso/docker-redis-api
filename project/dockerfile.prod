@@ -1,0 +1,15 @@
+FROM node:20-slim
+
+WORKDIR /home/node/app
+
+# Copia só os arquivos de dependências primeiro (boa prática)
+COPY package*.json ./
+
+# Instala as dependências da aplicação
+RUN npm install
+
+# Agora copia o restante do código (index.js, test-redis.js, etc.)
+COPY . .
+
+# Comando que será executado quando o container subir
+CMD ["node", "index.js"]

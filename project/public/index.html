@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker + Node + Redis</title>
+</head>
+<body>
+    <h1>Front simples usando Node, Docker e Redis</h1>
+
+    <button id="btnSet">Salvar mensagem no Redis</button>
+    <button id="btnGet">Pegar mensagem do Redis</button>
+    <button id="btnvisit">Contar Visitas</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        resultado = document.getElementById('resultado')
+
+        document.getElementById('btnSet').addEventListener('click', async () => {
+            try{
+                const resp = await fetch('/set')
+                const texto = await resp.text()
+                resultado.textContent = texto
+            } catch (err){
+                resultado.textContent = 'Erro ao chamar /set'
+                console.log(err)
+            }
+        })
+
+        document.getElementById('btnGet').addEventListener('click', async () => {
+            try{
+                const resp = await fetch('/catch')
+                const texto = await resp.text()
+                resultado.textContent = texto
+            } catch(err){
+                resultado.textContent = 'Erro ao chamar /get'
+                console.log(err)
+            }
+        })
+
+        document.getElementById('btnvisit').addEventListener('click', async () => {
+            try{
+                const resp = await fetch('/visit')
+                const texto = await resp.text()
+                resultado.textContent = texto
+            } catch(err){
+                resultado.textContent = 'Erro ao chamar /visit'
+                console.log(err)
+            }
+        })
+        
+    </script>
+    
+</body>
+</html>

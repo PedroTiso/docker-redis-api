@@ -1,0 +1,9 @@
+##Fornecer um container que fica de pe/vazio esperando receber codigo via volume
+## Ambiente, onde a aplicacao roda dentro do DOCKER
+## docker compose vai montar sua pasta local dentro dele
+
+FROM node:20-slim
+
+WORKDIR /home/node/app
+
+CMD ["tail", "-f", "/dev/null"]

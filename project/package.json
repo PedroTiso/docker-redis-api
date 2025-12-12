@@ -1,0 +1,16 @@
+{
+  "name": "project2-docker-node-redis",
+  "version": "1.0.0",
+  "description": "API Node rodando em Docker com Redis (dev e prod)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "author": "Pedro Tiso",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1",
+    "redis": "^5.10.0"
+  }
+}
